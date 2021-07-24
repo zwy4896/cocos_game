@@ -28,7 +28,7 @@ Scene* GameScene::createScene(int level)
 
 bool GameScene::init()
 {
-	if ( !LayerColor::initWithColor(Color4B(0,250,250,255)) )
+	if ( !LayerColor::init() )
 	{
 		return false;
 	}
@@ -111,15 +111,15 @@ bool GameScene::init()
 	//申请键盘监听
 	EventListenerKeyboard* event = EventListenerKeyboard::create();
 	event->onKeyPressed = [=](EventKeyboard::KeyCode code, Event* event){
-		if(code == EventKeyboard::KeyCode::KEY_K)
+		if(code == EventKeyboard::KeyCode::KEY_K || code == EventKeyboard::KeyCode::KEY_SPACE)
 		{
 			hero->jump();
 		}
-		else if(code == EventKeyboard::KeyCode::KEY_A)
+		else if(code == EventKeyboard::KeyCode::KEY_A || code == EventKeyboard::KeyCode::KEY_LEFT_ARROW)
 		{
 			hero->moveLeft();
 		}
-		else if(code == EventKeyboard::KeyCode::KEY_D)
+		else if(code == EventKeyboard::KeyCode::KEY_D || code == EventKeyboard::KeyCode::KEY_RIGHT_ARROW)
 		{
 			hero->moveRight();
 		}
@@ -129,11 +129,11 @@ bool GameScene::init()
 		}
 	};
 	event->onKeyReleased = [=](EventKeyboard::KeyCode code, Event* event){
-		if(code == EventKeyboard::KeyCode::KEY_A && hero->getMoveState() == MOVE_LEFT)
+		if((code == EventKeyboard::KeyCode::KEY_A || code == EventKeyboard::KeyCode::KEY_LEFT_ARROW) && hero->getMoveState() == MOVE_LEFT)
 		{
 			hero->moveStop();
 		}
-		else if(code == EventKeyboard::KeyCode::KEY_D && hero->getMoveState() == MOVE_RIGHT)
+		else if((code == EventKeyboard::KeyCode::KEY_D || code == EventKeyboard::KeyCode::KEY_RIGHT_ARROW) && hero->getMoveState() == MOVE_RIGHT)
 		{
 			hero->moveStop();
 		}

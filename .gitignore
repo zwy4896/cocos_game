@@ -1,5 +1,6 @@
-Classes_bak/
+*_bak/
 cocos2d/
-mac-build/
-proj.ios_mac/
+*build/
+proj.*/
 Resources/
+.DS_Store
