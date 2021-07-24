@@ -1,7 +1,7 @@
 #include "HelloWorldScene.h"
 #include "GameScene.h"
 #include "ConfigData.h"
-#include "AboutScene.h"
+//#include "AboutScene.h"
 #include "LevelScene.h"
 //#include "JINTools.h"
 
@@ -18,7 +18,7 @@ Scene* HelloWorld::createScene()
 
 bool HelloWorld::init()
 {
-    if ( !LayerColor::initWithColor(Color4B(0,255,255,255)) )
+    if ( !LayerColor::init() )
     {
         return false;
     }
@@ -104,11 +104,11 @@ bool HelloWorld::init()
     return true;
 }
 
-void HelloWorld::aboutCallBack(cocos2d::Ref* ref)
-{
-	auto reScene = TransitionCrossFade::create(0.3f, AboutScene::createScene());
-	Director::getInstance()->pushScene(reScene);
-}
+//void HelloWorld::aboutCallBack(cocos2d::Ref* ref)
+//{
+//	auto reScene = TransitionCrossFade::create(0.3f, AboutScene::createScene());
+//	Director::getInstance()->pushScene(reScene);
+//}
 
 void HelloWorld::settingCallBack(cocos2d::Ref* ref)
 {

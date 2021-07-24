@@ -21,7 +21,7 @@ cocos2d::Scene* LevelScene::createScene()
 
 bool LevelScene::init()
 {
-	if (!LayerColor::initWithColor(Color4B::WHITE))
+	if (!LayerColor::init())
 	{
 		return false;
 	}
